@@ -3,28 +3,22 @@ version: "3"
 x-uffizzi:
   ingress:
     service: novnc
-    port: 80
+    port: 5901
 
 services:
 
   novnc:
-    container_name: vnc
-    image: dorowu/ubuntu-desktop-lxde-vnc
-    environment:
-      - VNC_VIEW_ONLY=true
-    ports:
-      - "80:80"
-    restart: on-failure
+    container_name: ubuntu
+    image: ubuntu/ubuntu:latest
     deploy:
       resources:
         limits:
           memory: 4000M
-          cpu: 4000m
 
   # app:
   #   container_name: app
   #   image: "${APP_IMAGE}"
-  #   # image: "ttl.sh/f0c0d6e9-f0ea-4f03-b04d-d673f4804901:24h" 
+  #   # image: "ttl.sh/f0c0d6e9-f0ea-4f03-b04d-d673f4804901:24h"
   #   stdin_open: true
   #   # tty: true
   #   # devices:
@@ -42,7 +36,7 @@ services:
   #     resources:
   #       limits:
   #         memory: 2000M
-  #         cpu: 2000m    
+  #         cpu: 2000m
 
   # novnc:
   #   container_name: novnc
@@ -60,7 +54,7 @@ services:
   #     resources:
   #       limits:
   #         memory: 2000M
-  #         cpu: 2000m    
+  #         cpu: 2000m
 
     # healthcheck:
     #     test: ["CMD", "curl", "-f", "http://localhost:8080"]
